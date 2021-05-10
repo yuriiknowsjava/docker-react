@@ -1,0 +1,10 @@
+sudo: required # superuser access is required for docker
+
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t yuriiknowsjava/docker-react:test .
+
+script:
+  - docker run -e CI=true yuriiknowsjava/docker-react:test npm run test -- --coverage
