@@ -17,7 +17,7 @@ deploy:
   bucket_name: elasticbeanstalk-us-east-2-695228135251 # AWS s3 name
   bucket_path: docker-react # folder in s3 
   on:
-      branch: main
+    branch: main
 
   # Env variable 
   access_key_id: '$AWS_ACCESS_KEY'

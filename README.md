@@ -2,6 +2,30 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Deploy
+
+### Gotchas
+
+* [aws-elastic-beanstalk-error-failed-to-deploy-application](https://stackoverflow.com/questions/61199211/aws-elastic-beanstalk-error-failed-to-deploy-application)
+
+If you are going to deploy to AWS elastic beanstalk, DO NOT USE named builder!
+
+```Dockerfile
+FROM node:apline AS builder
+# .....
+
+COPY --from=builder /frontend/build /usr/share/nginx/html
+```
+
+Use UNNAMED builder instead!
+
+```Dockerfile
+FROM node:alpine
+# .....
+
+COPY --from=0 /frontend/build /usr/share/nginx/html
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
